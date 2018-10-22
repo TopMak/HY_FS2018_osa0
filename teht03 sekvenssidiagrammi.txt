@@ -1,0 +1,32 @@
+title Sequence
+
+kayttaja->selain:
+note left of selain
+kayttaja kirjottaa osoiteriville
+fullstack-exampleapp.herokuapp.com/notes
+end note
+selain->palvelin: GET https://fullstack-exampleapp.herokuapp.com/notes
+note left of palvelin
+  vastataan HTML dokumentin runko (ilman notes)
+end note
+palvelin->selain: status 200, sivun HTML-koodin runko
+note right of selain
+  Dokumentissa määritelty css-tyyli (main.css) ja 
+  javascript tiedosto (main.js), noudetaan ne.
+end note
+selain->palvelin: GET https://fullstack-exampleapp.herokuapp.com/main.css
+selain->palvelin: GET https://fullstack-exampleapp.herokuapp.com/main.js
+palvelin->selain: status 200, main.css
+palvelin->selain: status 200, main.js
+note right of selain
+    Selain suorittaa main.js tiedoston, jossa GET-pyyntö
+end note
+selain->palvelin: GET https://fullstack-exampleapp.herokuapp.com/data.json
+
+palvelin->selain: status 200, data.json
+
+note left of selain
+ selain muodostaa palvelimen palauttaman HTML:n ja
+ javascriptin avulla muodostetaan näytölle viestit
+ data.json vastauksesta, kun data.json on ladattu kokonaan
+end note

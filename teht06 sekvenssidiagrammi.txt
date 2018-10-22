@@ -1,0 +1,24 @@
+title Sequence
+
+kayttaja->selain:
+note left of selain
+käyttäjä kirjottaa lomakeriville
+"mm-kultaa 2027, too high hopes?"
+end note
+note right of selain
+spa.js tiedostossa on korvattu oletus POST-komento. 
+Lomake lähetetään ja lomakeviesti lisätään notes "listalle".
+{
+content: "mm-kultaa 2027, too high hopes?",
+date:"yyyy-mm-ddThh:mm:ss.msmsZ"
+}
+end note
+selain->palvelin: POST https://fullstack-exampleapp.herokuapp.com/new_note_spa
+note left of palvelin
+  Palvelin käsittelee lomakkeen kentän viestin ja lisää sen listalle
+end note
+note left of selain
+Viestit piirretään uudestaan (redrawnotes())
+end note
+selain->kayttaja:
+palvelin->selain: status 201 Created (viesti lisätty onnistuneesti palvelimelle)
